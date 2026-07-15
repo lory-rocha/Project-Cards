@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bfdm6l3gil61j"]
+
+[ext_resource type="Script" uid="uid://i8shvhcascm1" path="res://scripts/ui/card_ui.gd" id="1_l3t17"]
+[ext_resource type="Texture2D" uid="uid://dmr7mp8tsowne" path="res://icon.svg" id="1_sq8ug"]
+
+[node name="UI" type="Control" unique_id=212181790]
+layout_mode = 3
+anchor_left = 0.41300002
+anchor_top = 0.25300002
+anchor_right = 0.587
+anchor_bottom = 0.74700004
+offset_left = 100.22397
+offset_top = 160.05598
+offset_right = -100.224
+offset_bottom = -160.05603
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l3t17")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1371052680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer" unique_id=1252575680]
+custom_minimum_size = Vector2(200, 320)
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=391242993]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ProjectTitle" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1678174157]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Project Title "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer" unique_id=1865393708]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.705, 0.705)
+texture = ExtResource("1_sq8ug")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=77083685]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="Category" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=297454978]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "Category"
+
+[node name="Deadline" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=546085697]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "hours/days "
+horizontal_alignment = 1
+autowrap_mode = 2
