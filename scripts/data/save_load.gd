@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH = "user://card_deck.tres"
+const SAVE_PATH = "user://usr_card_deck.tres"
 func load_deck() -> CardDeck:
 	if ResourceLoader.exists(SAVE_PATH):
 		var deck = ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE) as CardDeck

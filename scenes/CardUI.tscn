@@ -19,6 +19,7 @@ script = ExtResource("1_l3t17")
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1371052680]
+custom_minimum_size = Vector2(210, 302.5)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="PanelContainer" unique_id=1252575680]
-custom_minimum_size = Vector2(200, 320)
+custom_minimum_size = Vector2(210, 102)
 layout_mode = 2
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
@@ -48,10 +49,10 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer" unique_id=1865393708]
+custom_minimum_size = Vector2(107, 107)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-offset_transform_enabled = true
 offset_transform_scale = Vector2(0.705, 0.705)
 texture = ExtResource("1_sq8ug")
 
