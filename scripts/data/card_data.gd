@@ -29,6 +29,7 @@ func _to_string() -> String:
 	return "--[%s] %s (ID: %d)--" % [type_str, name, get_instance_id()]
 	
 func set_time_frame() -> void:
+	randomize()
 	const hours = 6
 	
 	# Generates a number using the global seed (already set up in your _ready)

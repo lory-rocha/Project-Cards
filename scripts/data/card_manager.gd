@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH = SaveLoad.SAVE_PATH
+var SAVE_PATH = SaveLoad.SAVE_PATH
 var deck: CardDeck
 var card: CardData
 
@@ -8,8 +8,6 @@ func _ready() -> void:
 	randomize()
 	deck = SaveLoad.load_deck()
 
-
-	
 func check_deck() -> void:
 	if deck == null:
 		deck = SaveLoad.load_deck()
@@ -40,24 +38,36 @@ func init_card(card_name:String, desc: String) -> void:
 	new_card.desc = desc
 	new_card.resource_local_to_scene = true
 	deck.add_card(new_card)
-	return_card()
 	
 	print(new_card.name, " added to deck")
 	print(new_card)
 	SaveLoad.save_deck(deck)
 
-func return_card() -> CardData:
+func get_card() -> CardData:
 	return card
 
-func randomize_card_index() -> void:
-	var last_index = card
-	if deck && deck.cards.size() > 0:
-		var rnd_index = deck.cards[randi() % deck.cards.size()]
-		while rnd_index == last_index:
-			rnd_index = deck.cards[randi() % deck.cards.size()]
-			last_index = rnd_index.duplicate()
-		rnd_index.set_time_frame()
-		card = rnd_index
-	else: 
-		print("No cards to randomize")
-		return
+var available_cards: Array[CardData] = []
+var last_drawn_card: CardData = null
+
+func randomize_card() -> CardData:
+	if not deck or deck.cards.is_empty():
+		return null
+
+	if deck.cards.size() == 1:
+		return deck.cards[0]
+
+	# Refill and shuffle the bag when empty
+	if available_cards.is_empty():
+		available_cards = deck.cards.duplicate()
+		available_cards.shuffle() # Knuth / Fisher-Yates
+
+		# Prevent back-to-back match across bag boundaries
+		if available_cards.back() == last_drawn_card:
+			# Swap the matching card with the bottom of the new bag
+			var temp = available_cards[0]
+			available_cards[0] = available_cards.back()
+			available_cards[available_cards.size() - 1] = temp
+
+	last_drawn_card = available_cards.pop_back()
+	last_drawn_card.set_time_frame()
+	return last_drawn_card

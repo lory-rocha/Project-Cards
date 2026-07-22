@@ -8,20 +8,21 @@ func _ready() -> void:
 
 func randomize_card():
 	if current_deck && current_deck.cards.size() > 0:
-		rnd_card = CardManager.return_card()
-		CardManager.randomize_card_index()
+		rnd_card = CardManager.get_card()
+		rnd_card = CardManager.randomize_card()
 		update_ui(rnd_card)
 		CardManager.reload_deck()
 		
-func update_ui(rnd_card:CardData):
-	if rnd_card != null:
-		%Category.text = rnd_card.type_to_string()
-		%ProjectTitle.text = rnd_card.name
-		%Deadline.text = rnd_card.deadline
+func update_ui(new_card:CardData):
+	if new_card != null:
+		%Category.text = 		new_card.type_to_string()
+		%ProjectTitle.text = 	new_card.name
+		%Deadline.text = 		new_card.deadline
 	else:
-		%Category.text = "Category"
-		%ProjectTitle.text = "Project Name"
-		%Deadline.text = "Deadline"
+		print("card is null")
+		%Category.text = 		"Category"
+		%ProjectTitle.text = 	"Project Name"
+		%Deadline.text = 		"Deadline"
 		
 func _on_randomize_button_clicked():
 	randomize_card()
